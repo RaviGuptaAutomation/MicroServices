@@ -1,0 +1,11 @@
+server:
+  port: 9003
+  
+spring:  application:    name: Gateway-Service
+  cloud:    gateway:      routes:      - id: user-serice
+        uri: lb://user-service
+        predicates:        - Path=/user/**
+      - id: contact-service
+        uri: lb://contact-service
+        predicates:        - Path=/contact/**          
+    
